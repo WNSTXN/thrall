@@ -5,8 +5,7 @@
     "build": "node -r @swc-node/register scripts/build.ts",
     "testbuild": "node -r @swc-node/register scripts/build.ts test",
     "test": "mocha --require @swc-node/register --extensions ts --watch --watch-files src 'src/**/*.test.ts'",
-    "testci": "mocha --require @swc-node/register --extensions ts 'src/**/*.test.ts'",
-    "generate": "node -r @swc-node/register scripts/generate_guest_token.ts"
+    "testci": "mocha --require @swc-node/register --extensions ts 'src/**/*.test.ts'"
   },
   "dependencies": {
     "dotenv": "^16.0.3",

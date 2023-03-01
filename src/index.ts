@@ -1,0 +1,1 @@
+export { TwitterQuery } from '@/queries'

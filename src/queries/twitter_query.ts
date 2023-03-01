@@ -45,14 +45,21 @@ export class TwitterQuery {
       include_tweet_replies: 'true',
       ext: 'mediaStats:highlightedLabel:hasNftAvatar:voiceInfo:birdwatchPivot:enrichments:superFollowMetadata:unmentionInfo:editControl:collab_control:vibe',
       ...search_params
-    })
+    }).toString()
 
-    return this.twitter.authorised_request(`${endpoint}?${url_search_params.toString()}`)
+    return this.twitter.authorised_request(`${endpoint}?${url_search_params}`)
   }
 
   private async get_unparsed_profile(username: string): Promise<UnparsedProfile> {
+    const url_search_params = new URLSearchParams({
+      variables: JSON.stringify({
+        screen_name: username,
+        withHighlightedLabel: true
+      })
+    }).toString()
+
     const request = await this.twitter.authorised_request(
-      `graphql/4S2ihIKfF3xhp-ENxvUAfQ/UserByScreenName?variables=%7B%22screen_name%22%3A%22${username}%22%2C%22withHighlightedLabel%22%3Atrue%7D`
+      `graphql/4S2ihIKfF3xhp-ENxvUAfQ/UserByScreenName?${url_search_params}`
     )
 
     return request.json()

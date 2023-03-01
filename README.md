@@ -1,7 +1,9 @@
 # thrall
 
-Boilerplate for Node.js projects.
+`thrall` is a Twitter crawler that uses Twitter's frontend API. No API keys necessary.
+
+## Setup
 
 ```bash
-yarn upgrade --latest
+yarn
 ```

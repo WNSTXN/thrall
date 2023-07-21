@@ -25,7 +25,7 @@ export class Twitter {
       headers: this.static_headers
     })
 
-    return request.json()
+    return request.json() as Promise<GuestTokenResponse>
   }
 
   is_guest_token_expired(): boolean {

@@ -62,7 +62,7 @@ export class TwitterQuery {
       `graphql/4S2ihIKfF3xhp-ENxvUAfQ/UserByScreenName?${url_search_params}`
     )
 
-    return request.json()
+    return request.json() as Promise<UnparsedProfile>
   }
 
   private async get_unparsed_user_timeline(username: string, count: `${number}`): Promise<UnparsedTimeline> {
@@ -71,12 +71,12 @@ export class TwitterQuery {
       count: count
     })
 
-    return request.json()
+    return request.json() as Promise<UnparsedTimeline>
   }
 
   private async get_unparsed_post(tweet_id: `${number}` | number): Promise<UnparsedPost> {
     const request = await this.authorised_request_with_search_params(`2/timeline/conversation/${tweet_id}.json`)
-    return request.json()
+    return request.json() as Promise<UnparsedPost>
   }
 
   async get_post(tweet_id: `${number}` | number): Promise<Post> {
